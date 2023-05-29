@@ -1,0 +1,9 @@
+POST https://europe-west3-mikes-demo2023.cloudfunctions.net/spaceshipdestination
+Accept: application/text
+Content-Type: application/json
+Authorization: bearer
+
+{}
+
+###{%gcloud auth print-identity-token%}
+

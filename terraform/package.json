@@ -1,0 +1,14 @@
+{
+  "name": "gcp-apigateway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "set_google_project": "gcloud config set project mikes-demo2023",
+    "google_default_login": "gcloud auth login",
+    "google_default_login_application_default": "gcloud auth application-default login"
+  },
+  "author": "",
+  "license": "ISC"
+}

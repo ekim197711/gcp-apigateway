@@ -1,0 +1,57 @@
+swagger: "2.0"
+info:
+  title: connect-device-ingestion-run-api
+  description: connect-device-ingestion-run connection from IPM
+  version: 1.0.0
+x-google-backend:
+  address: ${backend_address}
+schemes:
+  - https
+paths:
+  /api/v1/space/destination:
+    post:
+      tags:
+        - SpaceShipDestination
+      description: Destination For spaceship
+      operationId: spaceshipDestination
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/SpaceShip"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: Success response
+          schema:
+            type: string
+        500:
+          description: Destination not determined yet
+          schema:
+            type: string
+
+definitions:
+  SpaceShip:
+    type: object
+    properties:
+      id:
+        type: string
+      captain:
+        type: string
+      location:
+        type: string
+      fuelleft:
+        type: integer
+      model:
+        type: string
+security:
+  - api_key: [ ]
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: key
+    in: query
