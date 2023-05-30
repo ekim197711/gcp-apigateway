@@ -20,6 +20,10 @@ resource "google_project_service" "service_api_gateway_enable" {
   project = var.project_name
   service = google_api_gateway_api._api_gateway_api.managed_service
 }
+resource "google_project_service" "enable-services" {
+  for_each = var.services-to-enable
+  service  = each.key
+}
 
 resource "google_project_iam_member" "mikes_client_cloud_run_invoke" {
   project = "${var.project_name}"

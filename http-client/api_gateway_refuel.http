@@ -1,0 +1,8 @@
+POST https://api-gateway-adocanbp.nw.gateway.dev/refuelspaceship?key=AIzaSyBXl5500jUl_nv01-yz0ikIsTBvxq-8C4M
+Accept: application/text
+Content-Type: application/json
+
+{}
+
+###{%gcloud auth print-identity-token%}
+

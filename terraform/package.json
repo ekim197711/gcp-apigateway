@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "TF_APPLY": "cd environments/dev && terraform init && terraform apply -auto-approve",
     "test": "echo \"Error: no test specified\" && exit 1",
     "set_google_project": "gcloud config set project mikes-demo2023",
     "google_default_login": "gcloud auth login",

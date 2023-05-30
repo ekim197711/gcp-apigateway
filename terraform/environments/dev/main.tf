@@ -1,17 +1,17 @@
 locals {
-  region          = "europe-west3"
-  project_name    = "mikes-demo2023"
-  backend_address = ""
+  region                = "europe-west2"
+  project_name          = "mikes-demo2023"
+  openapi_template_vars = {
+    var1 = ""
+    var2 = ""
+  }
 }
 
 module "api-gateway" {
   source                = "../../modules/api-gateway"
-  region                = "${local.region}"
-  project_name          = "${local.project_name}"
-  openapi_template_vars = {
-    backend_address = local.backend_address
-    project_name    = local.project_name
-  }
+  region                = local.region
+  project_name          = local.project_name
+  openapi_template_vars = local.openapi_template_vars
 }
 terraform {
   required_providers {
@@ -40,7 +40,7 @@ provider "google-beta" {
 
 terraform {
   backend "gcs" {
-    bucket = "terraform-states"
+    bucket = "mikes-demo2023-terraform-states"
     prefix = "api-gateway"
   }
 }

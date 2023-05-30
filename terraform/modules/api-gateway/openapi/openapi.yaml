@@ -1,19 +1,21 @@
 swagger: "2.0"
 info:
-  title: connect-device-ingestion-run-api
-  description: connect-device-ingestion-run connection from IPM
+  title: Space Ship Api
+  description: made by Mike for demo purposes
   version: 1.0.0
-x-google-backend:
-  address: ${backend_address}
+#x-google-backend:
+#  address: https://us-central1-mikes-demo2023.cloudfunctions.net
 schemes:
   - https
 paths:
-  /api/v1/space/destination:
+  /refuelspaceship:
     post:
+      x-google-backend:
+        address: https://us-central1-mikes-demo2023.cloudfunctions.net/refuelspaceship
       tags:
-        - SpaceShipDestination
+        - SpaceShipRefuel
       description: Destination For spaceship
-      operationId: spaceshipDestination
+      operationId: refuelspaceship
       parameters:
         - in: body
           name: body
@@ -23,7 +25,33 @@ paths:
       consumes:
         - "application/json"
       produces:
+        - "application/text"
+      responses:
+        200:
+          description: Success response
+          schema:
+            type: string
+        500:
+          description: Destination not determined yet
+          schema:
+            type: string
+  /spaceshipdestination:
+    post:
+      x-google-backend:
+        address: https://europe-west3-mikes-demo2023.cloudfunctions.net/spaceshipdestination
+      tags:
+        - SpaceShipDestination
+      description: Destination For spaceship
+      operationId: spaceshipdestination
+      parameters:
+        - in: body
+          name: body
+          required: true
+          type: string
+      consumes:
         - "application/json"
+      produces:
+        - "application/text"
       responses:
         200:
           description: Success response
@@ -55,3 +83,13 @@ securityDefinitions:
     type: apiKey
     name: key
     in: query
+
+
+#  my_google_jwt:
+#    authorizationUrl: ''
+#    flow: implicit
+#    type: oauth2
+#    x-google-issuer: serviceaccount_mike@${var2}.iam.gserviceaccount.com
+#    x-google-audiences: ${var2}
+#    x-google-jwks_uri: >-
+#      https://www.googleapis.com/service_accounts/v1/jwk/serviceaccount_mike@${var2}.iam.gserviceaccount.com
