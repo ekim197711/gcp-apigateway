@@ -13,6 +13,12 @@ module "api-gateway" {
   project_name          = local.project_name
   openapi_template_vars = local.openapi_template_vars
 }
+
+module "loadbalancer" {
+  source                = "../../modules/load-loadbalancer"
+  region                = local.region
+  project_name          = local.project_name
+}
 terraform {
   required_providers {
     google = {
